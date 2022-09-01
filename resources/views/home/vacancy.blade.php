@@ -4,7 +4,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800">Data Perusahaan</h1>
+        <h1 class="h3 mb-4 text-gray-800">Data Lowongan</h1>
 
         <form action="{{ $path }}">
             <div class="input-group mb-3">
@@ -39,7 +39,7 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h6 class="m-0 font-weight-bold text-primary">Data Tabel Perusahaan</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Data Tabel Lowongan</h6>
                     <a href="{{ $path }}/create" class="btn btn-primary">Tambah Data</a>
                 </div>
             </div>
@@ -50,11 +50,12 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Nama</th>
-                                    <th>Email</th>
-                                    <th>NoHp</th>
-                                    <th>Alamat</th>
-                                    <th>Member</th>
+                                    <th>Lowongan</th>
+                                    <th>Skill</th>
+                                    <th>Gaji</th>
+                                    <th>Pengalaman</th>
+                                    <th>Lokasi</th>
+                                    <th>Jobdesk</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -62,11 +63,12 @@
                                 @foreach ($data as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->hp }}</td>
-                                        <td>{{ $item->alamat }}</td>
-                                        <td>{{ $item->member }}</td>
+                                        <td>{{ $item->lowongan }}</td>
+                                        <td>{{ $item->skill }}</td>
+                                        <td>{{ $item->gaji }}</td>
+                                        <td>{{ $item->experience }}</td>
+                                        <td>{{ $item->lokasi }}</td>
+                                        <td>{{ $item->jobdesk }}</td>
                                         <td>
                                             <div class="d-flex">
                                                 <a class="nav-link" href="{{ $path }}/{{ $item->id }}/edit">

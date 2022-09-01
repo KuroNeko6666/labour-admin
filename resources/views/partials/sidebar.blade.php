@@ -33,6 +33,12 @@
             <span>Psikogram</span></a>
     </li>
 
+    <li class="nav-item {{ $active == 'vacancy' ? 'active' : '' }}">
+        <a class="nav-link" href="/vacancy">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Lowongan</span></a>
+    </li>
+
     <li class="nav-item {{ str_contains($active, 'master') ? 'active' : '' }}">
         <a class="nav-link {{ str_contains($active, 'master') ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#master"
             aria-expanded="true" aria-controls="master">

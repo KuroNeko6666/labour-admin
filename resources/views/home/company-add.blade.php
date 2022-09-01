@@ -13,12 +13,13 @@
             </div>
             <div class="card-body">
 
-                <form action="{{ $path }}" method="post">
+                <form action="{{ $path }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">
                         <label for="name" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name">
+                            <input name="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                                id="name">
                             @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -29,7 +30,8 @@
                     <div class="form-group row">
                         <label for="email" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="email">
+                            <input name="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                id="email">
                             @error('email')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -38,9 +40,92 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="password" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                            <input name="password" type="password"
+                                class="form-control @error('password') is-invalid @enderror" id="password">
+                            @error('password')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
+                        <div class="col-sm-10">
+                            <input name="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror"
+                                id="alamat">
+                            @error('alamat')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="hp" class="col-sm-2 col-form-label">No Hp</label>
+                        <div class="col-sm-10">
+                            <input name="hp" type="number" class="form-control @error('hp') is-invalid @enderror"
+                                id="hp">
+                            @error('hp')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="web" class="col-sm-2 col-form-label">Website</label>
+                        <div class="col-sm-10">
+                            <input name="web" type="text" class="form-control @error('web') is-invalid @enderror"
+                                id="web">
+                            @error('web')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="visi" class="col-sm-2 col-form-label">Visi</label>
+                        <div class="col-sm-10">
+                            <textarea name="visi" type="text" class="form-control @error('visi') is-invalid @enderror" id="visi"></textarea>
+                            @error('visi')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="misi" class="col-sm-2 col-form-label">Misi</label>
+                        <div class="col-sm-10">
+                            <textarea name="misi" type="text" class="form-control @error('misi') is-invalid @enderror" id="misi"></textarea>
+                            @error('misi')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+                        <div class="col-sm-10">
+                            <textarea name="deskripsi" type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi"></textarea>
+                            @error('deskripsi')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label for="member" class="col-sm-2 col-form-label">Member</label>
                         <div class="col-sm-10">
-                            <select name="member" id="member" class="form-control @error('member') is-invalid @enderror">
+                            <select name="member" id="member"
+                                class="form-control @error('member') is-invalid @enderror">
                                 <option value="" disabled selected> Pilih jenis member</option>
                                 <option value="free">Free</option>
                                 <option value="silver">Silver</option>
@@ -53,18 +138,24 @@
                             @enderror
                         </div>
                     </div>
+
                     <div class="form-group row">
-                        <label for="password" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10">
-                            <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="password">
-                            @error('password')
+                        <label for="logo" class="col-sm-2 col-form-label">Logo</label>
+                        <div class="col-sm-3 ml-2">
+                            <label class="custom-file-label" for="logo">Pilih Gambar</label>
+                            <input name="logo" type="file" class="custom-file-input form-control  @error('logo') is-invalid @enderror" id="logo" accept="image/*" onchange="loadFile(event)">
+                            @error('logo')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
-                    </div>
+                        <div class="ml-3">
+                            <img id="output" height="200" width="200">
+                            <p class="fs-6 text-center mt-2">Preview</p>
+                        </div>
 
+                    </div>
                     <div class="form-group row justify-content-end">
                         <a href="{{ $path }}" class="btn btn-light text-primary mr-2">Batal</a>
                         <button type="submit" class="btn btn-primary">Tambah</button>
@@ -75,4 +166,18 @@
         </div>
 
     </div>
+
+    <script type="application/javascript">
+        $('input[type="file"]').change(function(e){
+            var fileName = e.target.files[0].name;
+            $('.custom-file-label').html(fileName);
+        });
+        var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+    </script>
 @endsection

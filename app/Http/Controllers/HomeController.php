@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Company;
+use App\Models\Perusahaan;
 class HomeController extends Controller
 {
     public function index(){
@@ -12,9 +13,9 @@ class HomeController extends Controller
             'active' => 'dashboard',
             'title' => 'Labour | Admin',
             'user' => User::all(),
-            'company' => Company::all(),
-            'silver' => Company::latest()->filter(['member' => 'silver']),
-            'gold' => Company::latest()->filter(['member' => 'gold']),
+            'company' => Perusahaan::all(),
+            'silver' => Perusahaan::latest()->filter(['member' => 'silver']),
+            'gold' => Perusahaan::latest()->filter(['member' => 'gold']),
         ]);
     }
 }
