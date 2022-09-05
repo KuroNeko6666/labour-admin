@@ -25,10 +25,10 @@
                 <form action="{{ $path }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">
-                        <label for="file" class="col-sm-2 col-form-label">File Psikogram</label>
+                        <label class='col-sm-2'for="file">Pilih file</label>
                         <div class="col-sm-10">
-                            <input name="file" type="file" class="form-control @error('file') is-invalid @enderror"
-                                id="file" list="user">
+                            <label class="custom-file-label" for="file"></label>
+                            <input name="file" type="file" class="custom-file-input form-control  @error('file') is-invalid @enderror" id="file" accept="image/*" onchange="loadFile(event)">
                             @error('file')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -36,7 +36,6 @@
                             @enderror
                         </div>
                     </div>
-
                     <div class="form-group row justify-content-end">
                         <a href="{{ $path }}" class="btn btn-light text-primary mr-2">Batal</a>
                         <button type="submit" class="btn btn-primary">Tambah</button>
@@ -46,7 +45,12 @@
 
             </div>
         </div>
-
+        <script type="application/javascript">
+            $('input[type="file"]').change(function(e){
+                var fileName = e.target.files[0].name;
+                $('.custom-file-label').html(fileName);
+            });
+        </script>
 
 
     </div>

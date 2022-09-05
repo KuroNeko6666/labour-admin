@@ -48,6 +48,15 @@ class UserController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|max:255|email:dns|unique:users',
             'password' => 'required|max:255|min:6',
+            'hp' => 'required|max:255',
+            'tempat_lahir' => 'required|max:255',
+            'tanggal_lahir' => 'required|max:255',
+            'provinsi' => 'required|max:255',
+            'kota' => 'required|max:255',
+            'alamat' => 'required|max:255',
+            'kewarganegaraan' => 'required|max:255',
+            'agama' => 'required|max:255',
+
         ]);
 
         $validated['password'] = bcrypt($validated['password']);
@@ -96,12 +105,28 @@ class UserController extends Controller
         if ($request->email == $user->email){
             $validated = $request->validate([
                 'name' => 'required|max:255',
+                'hp' => 'required|max:255',
+                'tempat_lahir' => 'required|max:255',
+                'tanggal_lahir' => 'required|max:255',
+                'provinsi' => 'required|max:255',
+                'kota' => 'required|max:255',
+                'alamat' => 'required|max:255',
+                'kewarganegaraan' => 'required|max:255',
+                'agama' => 'required|max:255',
             ]);
         } else {
             $validated = $request->validate([
                 'name' => 'required|max:255',
                 'email' => 'required|max:255|email:dns|unique:users',
-            ]);
+                'hp' => 'required|max:255',
+                'tempat_lahir' => 'required|max:255',
+                'tanggal_lahir' => 'required|max:255',
+                'provinsi' => 'required|max:255',
+                'kota' => 'required|max:255',
+                'alamat' => 'required|max:255',
+                'kewarganegaraan' => 'required|max:255',
+                'agama' => 'required|max:255',
+                ]);
         }
 
         $user->update($validated);

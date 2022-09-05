@@ -27,6 +27,17 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="phone" class="col-sm-2 col-form-label">No HP</label>
+                        <div class="col-sm-10">
+                            <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror" id="phone">
+                            @error('phone')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="email" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
                             <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="email">

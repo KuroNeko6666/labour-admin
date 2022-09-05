@@ -19,7 +19,7 @@
                             <input name="name" type="name" class="form-control form-control-user @error('name') is-invalid @enderror"
                                 id="exampleInputName" aria-describedby="nameHelp"
                                 placeholder="name">
-                            @error('email')
+                            @error('name')
                                 <p class="invalid-feedback">
                                     {{ $message }}
                                 </p>
@@ -44,6 +44,7 @@
                                 </p>
                             @enderror
                         </div>
+                        <input type="hidden" name="phone" value="0">
                         <button type="submit" class="btn btn-primary btn-user btn-block">
                             Daftar
                         </button>
