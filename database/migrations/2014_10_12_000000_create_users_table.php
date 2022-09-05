@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('hp')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->string('tanggal_lahir')->nullable();
-            $table->string('hp')->nullable();
             $table->string('provinsi')->nullable();
             $table->string('kota')->nullable();
             $table->string('alamat')->nullable();
