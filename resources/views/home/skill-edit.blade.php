@@ -4,7 +4,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800">Ubah Kemampuan</h1>
+        <h1 class="h3 mb-4 text-gray-800">Edit Kemampuan</h1>
 
         @if (session()->has('error'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -18,7 +18,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Formulir Ubah Kemampuan</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Formulir Edit Kemampuan</h6>
             </div>
             <div class="card-body">
 
@@ -50,7 +50,7 @@
 
                     <div class="form-group row justify-content-end">
                         <a href="{{ $path }}" class="btn btn-light text-primary mr-2">Batal</a>
-                        <button type="submit" class="btn btn-primary">Ubah</button>
+                        <button type="submit" class="btn btn-primary">Edit</button>
                     </div>
                 </form>
 
