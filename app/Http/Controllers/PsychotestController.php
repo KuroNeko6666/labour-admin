@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePsychotestRequest;
 use App\Http\Requests\UpdatePsychotestRequest;
 use App\Models\Psychotest;
+use App\Models\Psychologist;
 
 class PsychotestController extends Controller
 {
