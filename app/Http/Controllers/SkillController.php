@@ -48,15 +48,13 @@ class SkillController extends Controller
     public function store(StoreSkillRequest $request)
     {
 
-        if(Category::find($request->category_id)){
+
             $validated = $request->validate([
-                'category_id' => 'required|max:255',
+                'skill_group' => 'required|max:255',
                 'skill' => 'required|max:255|unique:skills',
             ]);
             Skill::create($validated);
             return redirect()->route('skill')->with('message', 'Skill berhasil ditambahkan!');
-        }
-        return redirect()->back()->with('error', 'Kategori tidak ditemukan');
 
     }
 
@@ -97,23 +95,20 @@ class SkillController extends Controller
      */
     public function update(UpdateSkillRequest $request, Skill $data)
     {
-        if(Category::find($request->category_id)){
             $validated;
             if ($request->skill != $data->skill){
                 $validated = $request->validate([
-                    'category_id' => 'required|max:255',
+                    'skill_group' => 'required|max:255',
                     'skill' => 'required|max:255|unique:skills',
                 ]);
             } else {
                 $validated = $request->validate([
-                    'category_id' => 'required|max:255',
+                    'skill_group' => 'required|max:255',
                 ]);
             }
 
             $data->update($validated);
             return redirect()->route('skill')->with('message', 'Skill berhasil diubah!');
-        }
-        return redirect()->back()->with('error', 'Kategori tidak ditemukan');
 
     }
 

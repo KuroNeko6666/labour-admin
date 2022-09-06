@@ -20,7 +20,8 @@ class Skill extends Model
         $query->when($fillters['search'] ?? false, function ($query, $search) {
             return $query->where(function ($query) use ($search) {
                 $query->where('id', 'like', '%'. $search. '%')
-                ->orWhere('skill', 'like', '%'. $search. '%');
+                ->orWhere('skill', 'like', '%'. $search. '%')
+                ->orWhere('skill_group', 'like', '%'. $search. '%');
             });
         });
     }

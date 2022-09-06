@@ -59,7 +59,7 @@
                                 @foreach ($data as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->category->category }}</td>
+                                        <td>{{ $item->skill_group }}</td>
                                         <td>{{ $item->skill }}</td>
                                         <td>
                                             <div class="d-flex">

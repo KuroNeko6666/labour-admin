@@ -25,15 +25,15 @@
                 <form action="{{ $path }}" method="post">
                     @csrf
                     <div class="form-group row">
-                        <label for="category_id" class="col-sm-2 col-form-label">Kategori Kemampuan</label>
+                        <label for="skill_group" class="col-sm-2 col-form-label">Kategori Kemampuan</label>
                         <div class="col-sm-10">
-                            <input name="category_id" type="number" class="form-control @error('category_id') is-invalid @enderror" id="category_id" list="psycholog">
+                            <input name="skill_group" type="number" class="form-control @error('skill_group') is-invalid @enderror" id="skill_group" list="psycholog">
                             <datalist id="psycholog">
                                 @foreach ($category as $item)
                                 <option value="{{ $item->id }}">{{ $item->category }}</option>
                                 @endforeach
                             </datalist>
-                            @error('category_id')
+                            @error('skill_group')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
