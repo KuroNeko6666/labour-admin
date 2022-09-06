@@ -6,6 +6,13 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800">Ubah Jadwal Psikotest</h1>
 
+        @if (session()->has('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
