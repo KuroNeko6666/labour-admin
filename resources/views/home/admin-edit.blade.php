@@ -28,10 +28,10 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="phone" class="col-sm-2 col-form-label">No HP</label>
+                        <label for="hp" class="col-sm-2 col-form-label">No HP</label>
                         <div class="col-sm-10">
-                            <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" value="{{ $data->phone }}">
-                            @error('phone')
+                            <input name="hp" type="text" class="form-control @error('hp') is-invalid @enderror" id="hp" value="{{ $data->hp }}">
+                            @error('hp')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

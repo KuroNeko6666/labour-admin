@@ -48,6 +48,7 @@ class AdminController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|max:255|email:dns|unique:admins',
+            'hp' => 'required|max:255',
             'password' => 'required|max:255|min:6',
         ]);
 
@@ -97,11 +98,13 @@ class AdminController extends Controller
         if ($request->email == $admin->email){
             $validated = $request->validate([
                 'name' => 'required|max:255',
+                'hp' => 'required|max:255',
             ]);
         } else {
             $validated = $request->validate([
                 'name' => 'required|max:255',
                 'email' => 'required|max:255|email:dns|unique:admins',
+                'hp' => 'required|max:255',
             ]);
         }
 
