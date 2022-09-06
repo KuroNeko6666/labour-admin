@@ -45,16 +45,20 @@ class PsychotestController extends Controller
      */
     public function store(StorePsychotestRequest $request)
     {
-        $validated = $request->validate([
-            'psychologist_id' => 'required|max:255',
-            'location' => 'required|max:255',
-            'date' => 'required|max:255',
-            'time' => 'required|max:255',
-            'quota' => 'required|max:255',
-        ]);
+        if(Psychologist::find($request->psychologist_id)){
 
-        Psychotest::create($validated);
-        return redirect()->route('schedule')->with('message', 'Jadwal berhasil ditambahkan!');
+            $validated = $request->validate([
+                'psychologist_id' => 'required|max:255',
+                'location' => 'required|max:255',
+                'date' => 'required|max:255',
+                'time' => 'required|max:255',
+                'quota' => 'required|max:255',
+            ]);
+
+            Psychotest::create($validated);
+            return redirect()->route('schedule')->with('message', 'Jadwal berhasil ditambahkan!');
+        }
+        return redirect()->back()->with('error', 'Psikolog tidak ditemukan!');
     }
 
     /**
@@ -94,16 +98,19 @@ class PsychotestController extends Controller
      */
     public function update(UpdatePsychotestRequest $request, Psychotest $psychotest)
     {
-        $validated = $request->validate([
-            'psycholog_id' => 'required|max:255',
-            'location' => 'required|max:255',
-            'date' => 'required|max:255',
-            'time' => 'required|max:255',
-            'quota' => 'required|max:255',
-        ]);
+        if(Psychologist::find($request->psychologist_id)){
+            $validated = $request->validate([
+                'psycholog_id' => 'required|max:255',
+                'location' => 'required|max:255',
+                'date' => 'required|max:255',
+                'time' => 'required|max:255',
+                'quota' => 'required|max:255',
+            ]);
 
-        $psychotest->update($validated);
-        return redirect()->route('schedule')->with('message', 'Jadwal berhasil diubah!');
+            $psychotest->update($validated);
+            return redirect()->route('schedule')->with('message', 'Jadwal berhasil diubah!');
+        }
+        return redirect()->back()->with('error', 'Psikolog tidak ditemukan!');
     }
 
     /**
