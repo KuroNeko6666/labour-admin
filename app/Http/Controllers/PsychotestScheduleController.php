@@ -53,16 +53,21 @@ class PsychotestScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'psychologist_id' => 'required|max:255',
-            'location' => 'required|max:255',
-            'date' => 'required|max:255',
-            'time' => 'required|max:255',
-            'quota' => 'required|max:255',
-        ]);
+        if(Psychologist::find($request->psychologist_id)){
+            $validated = $request->validate([
+                'psychologist_id' => 'required|max:255',
+                'location' => 'required|max:255',
+                'date' => 'required|max:255',
+                'time' => 'required|max:255',
+                'quota' => 'required|max:255',
+            ]);
 
-        Psychotest::create($validated);
-        return redirect()->route('schedule')->with('message', 'Jadwal berhasil ditambahkan!');
+            Psychotest::create($validated);
+            return redirect()->route('schedule')->with('message', 'Jadwal berhasil ditambahkan!');
+
+        }
+        return redirect()->back()->with('error', 'Psikolog tidak ditemukan!');
+
     }
 
     /**
@@ -101,17 +106,22 @@ class PsychotestScheduleController extends Controller
      */
     public function update(Request $request, Psychotest $schedule)
     {
-        $validated = $request->validate([
-            'psychologist_id' => 'required|max:255',
-            'location' => 'required|max:255',
-            'date' => 'required|max:255',
-            'time' => 'required|max:255',
-            'quota' => 'required|max:255',
-            'status' => 'required|max:255|in:unfinished,finished,cancel',
-        ]);
+        if(Psychologist::find($request->psychologist_id)){
+            $validated = $request->validate([
+                'psychologist_id' => 'required|max:255',
+                'location' => 'required|max:255',
+                'date' => 'required|max:255',
+                'time' => 'required|max:255',
+                'quota' => 'required|max:255',
+                'status' => 'required|max:255|in:unfinished,finished,cancel',
+            ]);
 
-        $schedule->update($validated);
-        return redirect()->route('schedule')->with('message', 'Jadwal berhasil diubah!');
+            $schedule->update($validated);
+            return redirect()->route('schedule')->with('message', 'Jadwal berhasil diubah!');
+        }
+
+        return redirect()->back()->with('error', 'Psikolog tidak ditemukan!');
+
     }
 
     /**
