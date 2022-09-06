@@ -52,6 +52,7 @@
                 <a class="collapse-item {{ $active == 'master-user' ? 'active' : '' }}" href="/master/user">Data Pengguna</a>
                 <a class="collapse-item {{ $active == 'master-company' ? 'active' : '' }}" href="/master/company">Data Perusahaan</a>
                 <a class="collapse-item {{ $active == 'master-psychologist' ? 'active' : '' }}" href="/master/psychologist">Data Psikolog</a>
+                <a class="collapse-item {{ $active == 'master-skill' ? 'active' : '' }}" href="/skill/data">Data Skill</a>
             </div>
         </div>
     </li>
@@ -68,22 +69,6 @@
                 <h6 class="collapse-header">Data Psikotest :</h6>
                 <a class="collapse-item {{ $active == 'psychotest-schedule' ? 'active' : '' }}" href="/psychotest/schedule">Jadwal Psikotest</a>
                 <a class="collapse-item {{ $active == 'psychotest-participant' ? 'active' : '' }}" href="/psychotest/participant">Peserta Psikotest</a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ str_contains($active, 'skill') ? 'active' : '' }}">
-        <a class="nav-link {{ str_contains($active, 'skill') ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#skills"
-            aria-expanded="true" aria-controls="skills">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Kemampuan</span>
-        </a>
-        <div id="skills" class="collapse {{ str_contains($active, 'skill') ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Data Kemampuan :</h6>
-                <a class="collapse-item {{ $active == 'skill-category' ? 'active' : '' }}" href="/skill/category">Kategori Kamampuan</a>
-                <a class="collapse-item {{ $active == 'skill-data' ? 'active' : '' }}" href="/skill/data">Data Kemampuan</a>
             </div>
         </div>
     </li>

@@ -18,7 +18,7 @@ class SkillController extends Controller
     {
         return view('home.skill',[
             'title' => 'Labour Admin',
-            'active' => 'skill-data',
+            'active' => 'master-skill',
             'path' => '/skill/data',
             'data' => Skill::latest()->filter(request(['search']))->paginate(10)->withQueryString(),
         ]);
@@ -33,7 +33,7 @@ class SkillController extends Controller
     {
         return view('home.skill-add',[
             'title' => 'Labour Admin',
-            'active' => 'skill-data',
+            'active' => 'master-skill',
             'path' => '/skill/data',
             'category' => Category::all(),
         ]);
@@ -79,7 +79,7 @@ class SkillController extends Controller
     {
         return view('home.skill-edit',[
             'title' => 'Labour Admin',
-            'active' => 'skill-data',
+            'active' => 'master-skill',
             'path' => '/skill/data',
             'data' => $data,
             'category' => Category::all(),
