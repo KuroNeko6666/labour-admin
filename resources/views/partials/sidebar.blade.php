@@ -52,7 +52,7 @@
                 <a class="collapse-item {{ $active == 'master-user' ? 'active' : '' }}" href="/master/user">Data Pengguna</a>
                 <a class="collapse-item {{ $active == 'master-company' ? 'active' : '' }}" href="/master/company">Data Perusahaan</a>
                 <a class="collapse-item {{ $active == 'master-psychologist' ? 'active' : '' }}" href="/master/psychologist">Data Psikolog</a>
-                <a class="collapse-item {{ $active == 'master-skill' ? 'active' : '' }}" href="/skill/data">Data Skill</a>
+                <a class="collapse-item {{ $active == 'master-skill' ? 'active' : '' }}" href="/skill/data">Data Kemampuan</a>
             </div>
         </div>
     </li>
