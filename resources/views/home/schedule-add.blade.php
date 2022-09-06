@@ -13,6 +13,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
+        @endif
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
