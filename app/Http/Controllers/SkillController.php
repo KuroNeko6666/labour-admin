@@ -36,6 +36,7 @@ class SkillController extends Controller
             'active' => 'master-skill',
             'path' => '/skill/data',
             'category' => Category::all(),
+            'skill' => Skill::latest(),
         ]);
     }
 
@@ -83,6 +84,7 @@ class SkillController extends Controller
             'path' => '/skill/data',
             'data' => $data,
             'category' => Category::all(),
+            'skill' => Skill::latest(),
         ]);
     }
 

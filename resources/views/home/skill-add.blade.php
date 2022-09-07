@@ -27,7 +27,12 @@
                     <div class="form-group row">
                         <label for="skill_group" class="col-sm-2 col-form-label">Kategori Kemampuan</label>
                         <div class="col-sm-10">
-                            <input name="skill_group" type="text" class="form-control @error('skill_group') is-invalid @enderror" id="skill_group">
+                            <input name="skill_group" type="text" class="form-control @error('skill_group') is-invalid @enderror" id="skill_group" list="skill_group">
+                            <datalist id="skill_group">
+                                @foreach ($skill as $item)
+                                    <option value="{{ $item->skill_group }}">
+                                @endforeach
+                            </datalist>
                             @error('skill_group')
                                 <div class="invalid-feedback">
                                     {{ $message }}
