@@ -16,11 +16,13 @@ class PsychogramController extends Controller
      */
     public function index()
     {
+        $data = Psychogram::latest()->filter(request(['search']))->paginate(10)->withQueryString();
+
         return view('home.psychogram',[
             'title' => 'Labour Admin',
             'active' => 'psychogram',
             'path' => '/psychogram',
-            'data' => Psychogram::latest()->filter(request(['search']))->paginate(10)->withQueryString(),
+            'data' => $data
         ]);
     }
 

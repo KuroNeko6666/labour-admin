@@ -17,11 +17,12 @@ class PerusahaanController extends Controller
      */
     public function index()
     {
+        $data = Perusahaan::latest()->filter(request(['search']))->paginate(10)->withQueryString();
         return view('home.company',[
             'title' => 'Labour Admin',
             'active' => 'master-company',
             'path' => '/master/company',
-            'data' => Perusahaan::latest()->filter(request(['search']))->paginate(10)->withQueryString()
+            'data' => $data
         ]);
     }
 

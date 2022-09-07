@@ -15,11 +15,14 @@ class AdminController extends Controller
      */
     public function index()
     {
+        $data = Admin::latest()->filter(request(['search']))->paginate(10)->withQueryString();
+
+
         return view('home.admin',[
             'title' => 'Labour Admin',
             'active' => 'master-admin',
             'path' => '/master/admin',
-            'data' => Admin::latest()->filter(request(['search']))->paginate(10)->withQueryString()
+            'data' => $data
         ]);
     }
 

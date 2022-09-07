@@ -14,11 +14,13 @@ class UserController extends Controller
      */
     public function index()
     {
+        $data = User::latest()->filter(request(['search']))->paginate(10)->withQueryString();
+
         return view('home.user',[
             'title' => 'Labour Admin',
             'active' => 'master-user',
             'path' => '/master/user',
-            'data' => User::latest()->filter(request(['search']))->paginate(10)->withQueryString()
+            'data' => $data,
         ]);
     }
 

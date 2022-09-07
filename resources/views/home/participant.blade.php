@@ -49,6 +49,7 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                    <th>NO</th>
                                     <th>ID Psikotest</th>
                                     <th>ID Peserta</th>
                                     <th>Nama</th>
@@ -58,8 +59,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $item)
+                                @foreach ($data as $key => $item)
                                     <tr>
+                                        <td>{{ $key + $data->firstItem() }}</td>
                                         <td>{{ $item->psychologist_id }}</td>
                                         <td>{{ $item->user_id }}</td>
                                         <td>{{ $item->name }}</td>

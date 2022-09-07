@@ -17,11 +17,13 @@ class PsychotestParticipantController extends Controller
      */
     public function index()
     {
+        $data = PsychotestParticipant::latest()->filter(request(['search']))->paginate(10)->withQueryString();
+
         return view('home.participant',[
             'title' => 'Labour Admin',
             'active' => 'psychotest-participant',
             'path' => '/psychotest/participant',
-            'data' => PsychotestParticipant::latest()->filter(request(['search']))->paginate(10)->withQueryString(),
+            'data' => $data
         ]);
     }
 

@@ -14,11 +14,13 @@ class VacancyController extends Controller
      */
     public function index()
     {
+        $data = Vacancy::latest()->filter(request(['search']))->paginate(10)->withQueryString();
+
         return view('home.vacancy',[
             'title' => 'Labour Admin',
             'active' => 'vacancy',
             'path' => '/vacancy',
-            'data' => Vacancy::latest()->filter(request(['search']))->paginate(10)->withQueryString()
+            'data' => $data
         ]);
     }
 

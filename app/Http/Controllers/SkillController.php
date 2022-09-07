@@ -16,11 +16,15 @@ class SkillController extends Controller
      */
     public function index()
     {
+
+        $data = Skill::latest()->filter(request(['search']))->paginate(10)->withQueryString();
+
+
         return view('home.skill',[
             'title' => 'Labour Admin',
             'active' => 'master-skill',
             'path' => '/skill/data',
-            'data' => Skill::latest()->filter(request(['search']))->paginate(10)->withQueryString(),
+            'data' => $data
         ]);
     }
 

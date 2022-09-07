@@ -20,13 +20,15 @@ class PsychotestScheduleController extends Controller
         if(request('status')){
             $status = request('status');
         }
+        $data = Psychotest::latest()->filter(['status' => $status])->filter(request(['search']))->paginate(10)->withQueryString();
+
 
         return view('home.schedule',[
             'title' => 'Labour Admin',
             'active' => 'psychotest-schedule',
             'path' => '/psychotest/schedule',
             'status' => $status,
-            'data' => Psychotest::latest()->filter(['status' => $status])->filter(request(['search']))->paginate(10)->withQueryString(),
+            'data' => $data
         ]);
     }
 

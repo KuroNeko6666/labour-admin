@@ -15,11 +15,13 @@ class CompanyController extends Controller
      */
     public function index()
     {
+        $data = Company::latest()->filter(request(['search']))->paginate(10)->withQueryString();
+
         return view('home.company',[
             'title' => 'Labour Admin',
             'active' => 'master-company',
             'path' => '/master/company',
-            'data' => Company::latest()->filter(request(['search']))->paginate(10)->withQueryString()
+            'data' => $data
         ]);
     }
 

@@ -15,11 +15,13 @@ class PsychologistController extends Controller
      */
     public function index()
     {
+        $data = Psychologist::latest()->filter(request(['search']))->paginate(10)->withQueryString();
+
         return view('home.psychologist',[
             'title' => 'Labour Admin',
             'active' => 'master-psychologist',
             'path' => '/master/psychologist',
-            'data' => Psychologist::latest()->filter(request(['search']))->paginate(10)->withQueryString()
+            'data' => $data,
         ]);
     }
 

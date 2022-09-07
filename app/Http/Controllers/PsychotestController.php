@@ -16,11 +16,13 @@ class PsychotestController extends Controller
      */
     public function index()
     {
+        $data = Psychotest::latest()->filter(request(['search']))->paginate(10)->withQueryString();
+
         return view('home.schedule',[
             'title' => 'Labour Admin',
             'active' => 'psychotest-schedule',
             'path' => '/psychotest/schedule',
-            'data' => Psychotest::latest()->filter(request(['search']))->paginate(10)->withQueryString()
+            'data' => $data,
         ]);
     }
 
@@ -46,6 +48,7 @@ class PsychotestController extends Controller
      */
     public function store(StorePsychotestRequest $request)
     {
+
         if(Psychologist::find($request->psychologist_id)){
 
             $validated = $request->validate([
