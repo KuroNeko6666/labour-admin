@@ -49,7 +49,7 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+
                                     <th>Kategori</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -57,7 +57,7 @@
                             <tbody>
                                 @foreach ($data as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
+
                                         <td>{{ $item->category }}</td>
                                         <td>
                                             <div class="d-flex">

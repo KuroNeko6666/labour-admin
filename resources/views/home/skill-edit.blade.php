@@ -34,7 +34,6 @@
                             <datalist id="skills">
                                 @foreach ($skill->unique('skill_group') as $item)
                                     <option value="{{ $item->skill_group }}"></option>
-
                                 @endforeach
                             </datalist>
                             @error('skill_group')

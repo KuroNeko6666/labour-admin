@@ -49,7 +49,7 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+
                                     <th>Kategori</th>
                                     <th>Kemampuan</th>
                                     <th>Aksi</th>
@@ -58,7 +58,7 @@
                             <tbody>
                                 @foreach ($data as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
+
                                         <td>{{ $item->skill_group }}</td>
                                         <td>{{ $item->skill }}</td>
                                         <td>

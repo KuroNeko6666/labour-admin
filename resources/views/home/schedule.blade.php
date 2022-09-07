@@ -61,7 +61,7 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+
                                     <th>Lokasi</th>
                                     <th>Tanggal</th>
                                     <th>Jam</th>
@@ -73,7 +73,7 @@
                             <tbody>
                                 @foreach ($data as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
+
                                         <td>{{ $item->location }}</td>
                                         <td>{{ $item->date }}</td>
                                         <td>{{ $item->time }}</td>
