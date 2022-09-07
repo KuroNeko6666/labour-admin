@@ -15,7 +15,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $data = Company::latest()->filter(request(['search']))->paginate(10)->withQueryString();
+        $data = Perusahaan::latest()->filter(request(['search','member']))->paginate(10)->withQueryString();
 
         return view('home.company',[
             'title' => 'Labour Admin',
@@ -55,7 +55,7 @@ class CompanyController extends Controller
 
         $validated['password'] = bcrypt($validated['password']);
 
-        Company::create($validated);
+        Perusahaan::create($validated);
         return redirect()->route('company')->with('message', 'Perusahaan berhasil ditambahkan!');
     }
 
