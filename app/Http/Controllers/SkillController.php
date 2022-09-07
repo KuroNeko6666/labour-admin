@@ -35,8 +35,7 @@ class SkillController extends Controller
             'title' => 'Labour Admin',
             'active' => 'master-skill',
             'path' => '/skill/data',
-            'category' => Category::all(),
-            'skill' => Skill::latest(),
+            'skill' => Skill::all(),
         ]);
     }
 
@@ -84,7 +83,7 @@ class SkillController extends Controller
             'path' => '/skill/data',
             'data' => $data,
             'category' => Category::all(),
-            'skill' => Skill::latest(),
+            'skill' => Skill::all(),
         ]);
     }
 
