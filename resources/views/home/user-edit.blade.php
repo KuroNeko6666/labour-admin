@@ -83,10 +83,10 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="kota" class="col-sm-2 col-form-label">Kota</label>
+                        <label for="kokab" class="col-sm-2 col-form-label">kota</label>
                         <div class="col-sm-10">
-                            <input name="kota" type="text" class="form-control @error('kota') is-invalid @enderror" id="kota" value={{ $data->kota }}>
-                            @error('kota')
+                            <input name="kokab" type="text" class="form-control @error('kokab') is-invalid @enderror" id="kokab" value={{ $data->kokab }}>
+                            @error('kokab')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -106,9 +106,14 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="kewarganegaraan" class="col-sm-2 col-form-label">Kewarganegaraan</label>
+                        <label for="kewarganegaraan" class="col-sm-2 col-form-label">kewarganegaraan</label>
                         <div class="col-sm-10">
-                            <input name="kewarganegaraan" type="text" class="form-control @error('kewarganegaraan') is-invalid @enderror" id="kewarganegaraan" value={{ $data->kewarganegaraan }}>
+                            <select name="kewarganegaraan" id="kewarganegaraan"
+                                class="form-control @error('kewarganegaraan') is-invalid @enderror">
+                                <option value="{{ $data->kewarganegaraan }}">{{ $data->kewarganegaraan }}</option>
+                                <option value="WNI">WNI</option>
+                                <option value="WNA">WNA</option>
+                            </select>
                             @error('kewarganegaraan')
                                 <div class="invalid-feedback">
                                     {{ $message }}

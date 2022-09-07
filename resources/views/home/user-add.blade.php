@@ -93,10 +93,10 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="kota" class="col-sm-2 col-form-label">Kota</label>
+                        <label for="kokab" class="col-sm-2 col-form-label">Kota</label>
                         <div class="col-sm-10">
-                            <input name="kota" type="text" class="form-control @error('kota') is-invalid @enderror" id="kota">
-                            @error('kota')
+                            <input name="kokab" type="text" class="form-control @error('kokab') is-invalid @enderror" id="kokab">
+                            @error('kokab')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -119,6 +119,22 @@
                         <label for="kewarganegaraan" class="col-sm-2 col-form-label">Kewarganegaraan</label>
                         <div class="col-sm-10">
                             <input name="kewarganegaraan" type="text" class="form-control @error('kewarganegaraan') is-invalid @enderror" id="kewarganegaraan">
+                            @error('kewarganegaraan')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="kewarganegaraan" class="col-sm-2 col-form-label">kewarganegaraan</label>
+                        <div class="col-sm-10">
+                            <select name="kewarganegaraan" id="kewarganegaraan"
+                                class="form-control @error('kewarganegaraan') is-invalid @enderror">
+                                <option value="WNI">WNI</option>
+                                <option value="WNA">WNA</option>
+                            </select>
                             @error('kewarganegaraan')
                                 <div class="invalid-feedback">
                                     {{ $message }}
