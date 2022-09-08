@@ -52,7 +52,8 @@
                                     <th>NO</th>
                                     <th>Lowongan</th>
                                     <th>Skill</th>
-                                    <th>Gaji</th>
+                                    <th>Min Gaji</th>
+                                    <th>Maks Gaji</th>
                                     <th>Pengalaman</th>
                                     <th>Lokasi</th>
                                     <th>Jobdesk</th>
@@ -65,7 +66,8 @@
                                         <td>{{ $key + $data->firstItem() }}</td>
                                         <td>{{ $item->lowongan }}</td>
                                         <td>{{ $item->skill }}</td>
-                                        <td>{{ $item->gaji }}</td>
+                                        <td>{{ $item->min_gaji }}</td>
+                                        <td>{{ $item->max_gaji }}</td>
                                         <td>{{ $item->experience }}</td>
                                         <td>{{ $item->lokasi }}</td>
                                         <td>{{ $item->jobdesk }}</td>

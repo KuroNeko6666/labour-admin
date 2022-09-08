@@ -40,7 +40,7 @@
             <div class="card-header py-3">
                 <div class="d-flex justify-content-between align-items-center">
                     <h6 class="m-0 font-weight-bold text-primary">Data Tabel Peserta Psikotest</h6>
-                    <a href="{{ $path }}/create" class="btn btn-primary">Tambah Data</a>
+                    <a href="{{ $path }}/create{{ request('psychotest') ? '?psychotest='.request('psychotest') : '' }}" class="btn btn-primary">Tambah Data</a>
                 </div>
             </div>
             <div class="card-body">
@@ -54,7 +54,6 @@
                                     <th>ID Peserta</th>
                                     <th>Nama</th>
                                     <th>Email</th>
-                                    <th>Status/th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -62,16 +61,12 @@
                                 @foreach ($data as $key => $item)
                                     <tr>
                                         <td>{{ $key + $data->firstItem() }}</td>
-                                        <td>{{ $item->psychologist_id }}</td>
+                                        <td>{{ $item->psychotest_id }}</td>
                                         <td>{{ $item->user_id }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->status }}</td>
+                                        <td>{{ $item->user->name }}</td>
+                                        <td>{{ $item->user->email }}</td>
                                         <td>
                                             <div class="d-flex">
-                                                <a class="nav-link" href="{{ $path }}/{{ $item->id }}/edit">
-                                                    <i class="fas fa-fw fa-pen"></i>
-                                                </a>
                                                 <a class="nav-link" href="#"
                                                     data-target="#deleteModal{{ $item->id }}" data-toggle="modal">
                                                     <i class="fas fa-fw fa-trash text-danger"></i>
@@ -92,7 +87,6 @@
                 </div>
             </div>
         </div>
-
         {{ $data->links() }}
 
     </div>

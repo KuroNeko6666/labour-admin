@@ -134,7 +134,7 @@
                     </div>
                     <div class="form-group row justify-content-end">
                         <a href="{{ $path }}" class="btn btn-light text-primary mr-2">Batal</a>
-                        <button type="submit" class="btn btn-primary">Tambah</button>
+                        <button type="submit" class="btn btn-primary">Ubah</button>
                     </div>
                 </form>
 

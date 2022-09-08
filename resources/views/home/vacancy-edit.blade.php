@@ -41,11 +41,23 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="gaji" class="col-sm-2 col-form-label">Gaji</label>
+                        <label for="min_gaji" class="col-sm-2 col-form-label">Minimal Gaji</label>
                         <div class="col-sm-10">
-                            <input name="gaji" type="text" class="form-control @error('gaji') is-invalid @enderror"
-                                id="gaji" value="{{ $data->gaji }}">
-                            @error('gaji')
+                            <input name="min_gaji" type="number" class="form-control @error('min_gaji') is-invalid @enderror"
+                                id="min_gaji" value="{{ $data->min_gaji }}">
+                            @error('min_gaji')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="max_gaji" class="col-sm-2 col-form-label">Maksimal Gaji</label>
+                        <div class="col-sm-10">
+                            <input name="max_gaji" type="number" class="form-control @error('max_gaji') is-invalid @enderror"
+                                id="max_gaji" value="{{ $data->max_gaji }}">
+                            @error('max_gaji')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

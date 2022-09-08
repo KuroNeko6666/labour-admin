@@ -77,12 +77,12 @@
                                         <td>{{ $item->location }}</td>
                                         <td>{{ $item->date }}</td>
                                         <td>{{ $item->time }}</td>
-                                        <td>{{ $item->quota }}</td>
+                                        <td>{{ $item->quota }}/{{ $item->participant->count() }}</td>
                                         <td>{{ $item->status }}</td>
                                         <td>
                                             <div class="d-flex">
                                                 <form action="/psychotest/participant" method="get">
-                                                    <input type="hidden" name="psychotest_id" value="{{ $item->id }}">
+                                                    <input type="hidden" name="psychotest" value="{{ $item->id }}">
                                                     <button class="btn btn-primary" type="submit">
                                                         Detail
                                                     </button>

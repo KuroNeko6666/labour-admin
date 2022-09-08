@@ -119,6 +119,14 @@ class PsychologistController extends Controller
      */
     public function destroy(Psychologist $psychologist)
     {
+        $psychotests = $psychologist->psychotest;
+        foreach ($psychotests as $key => $psychotest) {
+            $participants = $psychotest->participant;
+            foreach ($participants as $key => $participant) {
+                $participant->delete();
+            }
+            $psychotest->delete();
+        }
         $psychologist->delete();
         return redirect()->route('psychologist')->with('message', 'Psikolog berhasil dihapus!');
     }

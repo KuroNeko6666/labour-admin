@@ -28,7 +28,7 @@
                         <label class='col-sm-2'for="file">Pilih file</label>
                         <div class="col-sm-10">
                             <label class="custom-file-label" for="file"></label>
-                            <input name="file" type="file" class="custom-file-input form-control  @error('file') is-invalid @enderror" id="file" accept="image/*" onchange="loadFile(event)">
+                            <input name="file" type="file" class="custom-file-input form-control  @error('file') is-invalid @enderror" id="file" accept="pdf/*" onchange="loadFile(event)">
                             @error('file')
                                 <div class="invalid-feedback">
                                     {{ $message }}

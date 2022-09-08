@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
+use File;
 
 class VacancyController extends Controller
 {
@@ -50,7 +51,8 @@ class VacancyController extends Controller
         $validated = $request->validate([
             'lowongan' => 'required|max:255',
             'skill' => 'required|max:255',
-            'gaji' => 'required|max:255',
+            'min_gaji' => 'required|max:255',
+            'max_gaji' => 'required|max:255',
             'experience' => 'required|max:255',
             'lokasi' => 'required|max:255',
             'jobdesk' => 'required',
@@ -106,7 +108,8 @@ class VacancyController extends Controller
             $validated = $request->validate([
                 'lowongan' => 'required|max:255',
                 'skill' => 'required|max:255',
-                'gaji' => 'required|max:255',
+                'min_gaji' => 'required|max:255',
+                'max_gaji' => 'required|max:255',
                 'experience' => 'required|max:255',
                 'lokasi' => 'required|max:255',
                 'jobdesk' => 'required',
@@ -119,7 +122,8 @@ class VacancyController extends Controller
             $validated = $request->validate([
                 'lowongan' => 'required|max:255',
                 'skill' => 'required|max:255',
-                'gaji' => 'required|max:255',
+                'min_gaji' => 'required|max:255',
+                'max_gaji' => 'required|max:255',
                 'experience' => 'required|max:255',
                 'lokasi' => 'required|max:255',
                 'jobdesk' => 'required',

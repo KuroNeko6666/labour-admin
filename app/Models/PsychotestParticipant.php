@@ -28,6 +28,11 @@ class PsychotestParticipant extends Model
                 ->orWhere('id', 'like', '%'. $search. '%');
             });
         });
+        $query->when($fillters['psychotest'] ?? false, function ($query, $search) {
+            return $query->where(function ($query) use ($search) {
+                $query->where('psychotest_id', $search);
+            });
+        });
     }
 
 

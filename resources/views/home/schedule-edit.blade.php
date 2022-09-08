@@ -103,7 +103,7 @@
                         </div>
                     </div>
 
-                    <input name="psychologist_id" type="hidden" value="{{ $data->id }}">
+                    {{-- <input name="psychologist_id" type="hidden" value="{{ $data->id }}"> --}}
 
                     <div class="form-group row justify-content-end">
                         <a href="{{ $path }}" class="btn btn-light text-primary mr-2">Batal</a>

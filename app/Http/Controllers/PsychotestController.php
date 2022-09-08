@@ -102,13 +102,15 @@ class PsychotestController extends Controller
      */
     public function update(UpdatePsychotestRequest $request, Psychotest $psychotest)
     {
+        dd($request->psychologist_id);
         if(Psychologist::find($request->psychologist_id)){
             $validated = $request->validate([
-                'psycholog_id' => 'required|max:255',
+                'psychologist_id' => 'required|max:255',
                 'location' => 'required|max:255',
                 'date' => 'required|max:255',
                 'time' => 'required|max:255',
                 'quota' => 'required|max:255',
+                'status' => 'in:finished,unfinished,cancel'
             ]);
 
             $psychotest->update($validated);

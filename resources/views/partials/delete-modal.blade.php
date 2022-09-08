@@ -12,7 +12,7 @@
          <div class="modal-body">Pilih "Hapus" jika ingin menghapus item ini</div>
          <div class="modal-footer">
              <button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
-             <form action="{{ $path }}/{{ $item->id }}" method="post">
+             <form action="{{ $path }}/{{ $item->id }}{{ request('psychotest')? '?psychotest='.request('psychotest') : '' }}" method="post">
                 @csrf
                 @method('delete')
                 <button class="btn btn-danger" type="submit">Hapus</button>
