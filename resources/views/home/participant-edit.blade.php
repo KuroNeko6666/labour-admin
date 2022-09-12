@@ -16,17 +16,17 @@
                 <form action="{{ $path }}" method="post">
                     @csrf
                     <div class="form-group row">
-                        <label for="user_id" class="col-sm-2 col-form-label">ID Peserta</label>
+                        <label for="users_id" class="col-sm-2 col-form-label">ID Peserta</label>
                         <div class="col-sm-10">
-                            <input name="user_id" type="text"
-                                class="form-control @error('user_id') is-invalid @enderror" id="user_id"
-                                value="{{ $data->user_id }}" list="user">
+                            <input name="users_id" type="text"
+                                class="form-control @error('users_id') is-invalid @enderror" id="users_id"
+                                value="{{ $data->users_id }}" list="user">
                             <datalist id="user">
                                 @foreach ($user as $item)
-                                    <option value="{{ $item->id }}"></option>
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                             </datalist>
-                            @error('user_id')
+                            @error('users_id')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -34,17 +34,17 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="psychotest_id" class="col-sm-2 col-form-label">ID Psikotest</label>
+                        <label for="jadwal_id" class="col-sm-2 col-form-label">ID Psikotest</label>
                         <div class="col-sm-10">
-                            <input name="psychotest_id" type="text"
-                                class="form-control @error('psychotest_id') is-invalid @enderror" id="psychotest_id"
-                                value="{{ $data->psychotest_id }}" list="psychotest">
+                            <input name="jadwal_id" type="text"
+                                class="form-control @error('jadwal_id') is-invalid @enderror" id="jadwal_id"
+                                value="{{ $data->jadwal_id }}" list="psychotest">
                             <datalist id="psychotest">
                                 @foreach ($psychotest as $item)
-                                    <option value="{{ $item->id }}"></option>
+                                    <option value="{{ $item->id }}">{{ $item->jenis_test }}</option>
                                 @endforeach
                             </datalist>
-                            @error('psychotest_id')
+                            @error('jadwal_id')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

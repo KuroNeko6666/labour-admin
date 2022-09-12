@@ -35,19 +35,6 @@
                 </button>
             </div>
         @endif
-
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link {{ $status == 'unfinished' ? 'active' : '' }}" href="{{ $path.'?status=unfinished' }}">Proses</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {{ $status == 'finished' ? 'active' : '' }}" href="{{ $path.'?status=finished' }}">Selesai</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {{ $status == 'cancel' ? 'active' : '' }}" href="{{ $path.'?status=cancel' }}">Dibatalkan</a>
-            </li>
-          </ul>
-
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <div class="d-flex justify-content-between align-items-center">
@@ -62,11 +49,10 @@
                             <thead>
                                 <tr>
                                     <th>NO</th>
-                                    <th>Lokasi</th>
-                                    <th>Tanggal</th>
-                                    <th>Jam</th>
+                                    <th>Psikolog</th>
+                                    <th>Jenis Test</th>
+                                    <th>Waktu</th>
                                     <th>Kuota</th>
-                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -74,11 +60,10 @@
                                 @foreach ($data as $key => $item)
                                     <tr>
                                         <td>{{ $key + $data->firstItem() }}</td>
-                                        <td>{{ $item->location }}</td>
-                                        <td>{{ $item->date }}</td>
-                                        <td>{{ $item->time }}</td>
-                                        <td>{{ $item->quota }}/{{ $item->participant->count() }}</td>
-                                        <td>{{ $item->status }}</td>
+                                        <td>{{ $item->psychologist->name }}</td>
+                                        <td>{{ $item->jenis_test }}</td>
+                                        <td>{{ $item->waktu }}</td>
+                                        <td>{{ $item->kuota }}</td>
                                         <td>
                                             <div class="d-flex">
                                                 <form action="/psychotest/participant" method="get">

@@ -61,8 +61,8 @@
                                 @foreach ($data as $key => $item)
                                     <tr>
                                         <td>{{ $key + $data->firstItem() }}</td>
-                                        <td>{{ $item->psychotest_id }}</td>
-                                        <td>{{ $item->user_id }}</td>
+                                        <td>{{ $item->jadwal_id }}</td>
+                                        <td>{{ $item->users_id }}</td>
                                         <td>{{ $item->user->name }}</td>
                                         <td>{{ $item->user->email }}</td>
                                         <td>

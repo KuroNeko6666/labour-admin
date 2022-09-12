@@ -6,12 +6,14 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\PsychogramController;
 use App\Http\Controllers\PsychotestController;
+use App\Http\Controllers\JadwalsUserController;
 use App\Http\Controllers\PsychologistController;
 use App\Http\Controllers\PsychotestScheduleController;
 use App\Http\Controllers\PsychotestParticipantController;
@@ -39,8 +41,8 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::resource('/psychogram', PsychogramController::class, ['names' => ['index' => 'psychogram']]);
-    Route::resource('/psychotest/schedule', PsychotestScheduleController::class, ['names' => ['index' => 'schedule']]);
-    Route::resource('/psychotest/participant', PsychotestParticipantController::class, ['names' => ['index' => 'participant']]);
+    Route::resource('/psychotest/schedule', JadwalController::class, ['names' => ['index' => 'schedule']]);
+    Route::resource('/psychotest/participant', JadwalsUserController::class, ['names' => ['index' => 'participant']]);
     Route::resource('/master/admin', AdminController::class, ['names' => ['index' => 'admin']]);
     Route::resource('/master/company', PerusahaanController::class, ['names' => ['index' => 'company']]);
     Route::resource('/master/user', UserController::class, ['names' => ['index' => 'user']]);
