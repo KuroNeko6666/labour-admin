@@ -68,7 +68,10 @@ class JadwalsUserController extends Controller
                         $jadwaluser = '';
                         if($jadwaluser = JadwalsUser::create($validated)){
                             $req = '';
-                            $kode_test = 'NT-'. date('m'). substr(str_repeat(0,5). $jadwaluser->id, - 5);
+                            $kode_test = 'NT-'. date('m'). sprintf("%05s", $jadwaluser->id);
+                            $jadwaluser->update([
+                                'kode_test' => $kode_test
+                            ]);
                             if(request('psychotest')){
                                 $req = '?psychotest='.request('psychotest');
                             }
