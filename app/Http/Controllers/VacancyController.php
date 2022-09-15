@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vacancy;
+use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 use File;
 
@@ -21,7 +22,8 @@ class VacancyController extends Controller
             'title' => 'Labour Admin',
             'active' => 'vacancy',
             'path' => '/vacancy',
-            'data' => $data
+            'data' => $data,
+            'company' => Perusahaan::all(),
         ]);
     }
 
@@ -36,6 +38,7 @@ class VacancyController extends Controller
             'title' => 'Labour Admin',
             'active' => 'vacancy',
             'path' => '/vacancy',
+            'company' => Perusahaan::all(),
         ]);
     }
 
@@ -47,8 +50,11 @@ class VacancyController extends Controller
      */
     public function store(Request $request)
     {
-        $file = $request->file('gambar');
+        if(!Perusahaan::find($request->perusahaan_id)){
+            return redirect()->back()->with('error', 'Perusahaan tidak ditemukan');
+        }
         $validated = $request->validate([
+            'perusahaan_id' => 'required|max:255',
             'lowongan' => 'required|max:255',
             'skill' => 'required|max:255',
             'min_gaji' => 'required|max:255',
@@ -58,9 +64,17 @@ class VacancyController extends Controller
             'jobdesk' => 'required',
             'gambar' => 'required|max:3056',
         ]);
+
+        $file = $request->file('gambar');
         $vacancy = Vacancy::create($validated);
-        $file->storeAs('gambar_lowongan', $vacancy['id'].'.'.$file->extension());
-        $validated['gambar'] = storage_path('app/gambar_lowongan/'.$vacancy['id'].'.'.$file->extension());
+        if(!$vacancy){
+            return redirect()->back()->with('error', 'Gagal menambahkan pengguna');
+        }
+        $nameFile = 'POST-'.sprintf("%010s", $vacancy->id);
+        $nameFile .= '.'.$file->extension();
+
+        $file->storeAs('gambar', $nameFile);
+        $validated['gambar'] = public_path('gambar/'.$nameFile);
         $vacancy->update([
             'gambar' => $validated['gambar'],
         ]);
@@ -90,7 +104,8 @@ class VacancyController extends Controller
             'title' => 'Labour Admin',
             'active' => 'vacancy',
             'path' => '/vacancy',
-            'data' => $vacancy
+            'data' => $vacancy,
+            'company' => Perusahaan::all(),
         ]);
     }
 
@@ -104,6 +119,9 @@ class VacancyController extends Controller
     public function update(Request $request, Vacancy $vacancy)
     {
         $validated;
+        if(!Perusahaan::find($request->perusahaan_id)){
+            return redirect()->back()->with('error', 'Perusahaan tidak ditemukan');
+        }
         if($request->file('gambar')){
             $validated = $request->validate([
                 'lowongan' => 'required|max:255',
@@ -115,9 +133,13 @@ class VacancyController extends Controller
                 'jobdesk' => 'required',
                 'gambar' => 'required|max:3056',
             ]);
+
             $file = $request->file('gambar');
-            $file->storeAs('gambar_lowongan', $vacancy['id'].'.'.$file->extension());
-            $validated['gambar'] = storage_path('app/gambar_lowongan/'.$vacancy['id'].'.'.$file->extension());
+            $nameFile = 'POST-'.sprintf("%010s", $vacancy->id);
+            $nameFile .= '.'.$file->extension();
+
+            $file->storeAs('gambar', $nameFile);
+            $validated['gambar'] = public_path('gambar/'.$nameFile);
         } else {
             $validated = $request->validate([
                 'lowongan' => 'required|max:255',
@@ -128,6 +150,9 @@ class VacancyController extends Controller
                 'lokasi' => 'required|max:255',
                 'jobdesk' => 'required',
             ]);
+        }
+        if(!$validated){
+            return redirect()->back()->with('error', 'Gagal menambahkan lowongan');
         }
 
         $vacancy->update($validated);

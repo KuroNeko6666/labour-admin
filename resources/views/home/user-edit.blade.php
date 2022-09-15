@@ -13,7 +13,7 @@
             </div>
             <div class="card-body">
 
-                <form action="{{ $path }}/{{ $data->id }}" method="post">
+                <form action="{{ $path }}/{{ $data->id }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="form-group row">
@@ -132,6 +132,23 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="foto" class="col-sm-2 col-form-label">Foto</label>
+                        <div class="col-sm-3 ml-2">
+                            <label class="custom-file-label" for="foto">Pilih Gambar</label>
+                            <input name="foto" type="file" class="custom-file-input form-control  @error('foto') is-invalid @enderror" id="foto" accept="image/*" onchange="loadFile(event)">
+                            @error('foto')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="ml-3">
+                            <img id="output" height="200" width="200">
+                            <p class="fs-6 text-center mt-2">Preview</p>
+                        </div>
+
+                    </div>
                     <div class="form-group row justify-content-end">
                         <a href="{{ $path }}" class="btn btn-light text-primary mr-2">Batal</a>
                         <button type="submit" class="btn btn-primary">Ubah</button>
@@ -142,4 +159,18 @@
         </div>
 
     </div>
+
+    <script type="application/javascript">
+        $('input[type="file"]').change(function(e){
+            var fileName = e.target.files[0].name;
+            $('.custom-file-label').html(fileName);
+        });
+        var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+    </script>
 @endsection

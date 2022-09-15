@@ -63,12 +63,22 @@ class PerusahaanController extends Controller
             'member' => 'required',
         ]);
         $validated['password'] = bcrypt($validated['password']);
+        $file = $request->file('logo');
         $company = Perusahaan::create($validated);
-        $file->storeAs('logo_perusahaan', $company['id'].'.'.$file->extension());
-        $validated['logo'] = storage_path('app/logo_perusahaan/'.$company['id'].'.'.$file->extension());
+
+        if(!$company){
+            return redirect()->back()->with('error', 'Gagal menambahkan pengguna');
+        }
+
+        $nameFile = 'FP-'.sprintf("%06s", $company->id);
+        $nameFile .= '.'.$file->extension();
+
+        $file->storeAs('foto', $nameFile);
+        $validated['logo'] = public_path('foto/'.$nameFile);
         $company->update([
             'logo' => $validated['logo'],
         ]);
+
         return redirect()->route('company')->with('message', 'Perusahaan berhasil ditambahkan!');
     }
 
@@ -137,8 +147,11 @@ class PerusahaanController extends Controller
                 ]);
             }
             $file = $request->file('logo');
-            $file->storeAs('logo_perusahaan', $company['id'].'.'.$file->extension());
-            $validated['logo'] = storage_path('app/logo_perusahaan/'.$company['id'].'.'.$file->extension());
+            $nameFile = 'FP-'.sprintf("%06s", $company->id);
+            $nameFile .= '.'.$file->extension();
+
+            $file->storeAs('foto', $nameFile);
+            $validated['logo'] = public_path('foto/'.$nameFile);
         } else {
             if ($request->email == $company->email){
                 $validated = $request->validate([
