@@ -41,7 +41,7 @@
                     <div class="form-group row">
                         <label for="hp" class="col-sm-2 col-form-label">No HP</label>
                         <div class="col-sm-10">
-                            <input name="hp" type="number" class="form-control @error('hp') is-invalid @enderror" id="hp" value={{ $data->hp }}>
+                            <input name="hp" type="number" class="form-control @error('hp') is-invalid @enderror" id="hp" value="{{ $data->hp }}">
                             @error('hp')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -52,7 +52,7 @@
                     <div class="form-group row">
                         <label for="tempat_lahir" class="col-sm-2 col-form-label">Tempat Lahir</label>
                         <div class="col-sm-10">
-                            <input name="tempat_lahir" type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" id="tempat_lahir" value={{ $data->tempat_lahir }}>
+                            <input name="tempat_lahir" type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" id="tempat_lahir" value="{{ $data->tempat_lahir }}">
                             @error('tempat_lahir')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -74,7 +74,7 @@
                     <div class="form-group row">
                         <label for="provinsi" class="col-sm-2 col-form-label">Provinsi</label>
                         <div class="col-sm-10">
-                            <input name="provinsi" type="text" class="form-control @error('provinsi') is-invalid @enderror" id="provinsi" value={{ $data->provinsi }}>
+                            <input name="provinsi" type="text" class="form-control @error('provinsi') is-invalid @enderror" id="provinsi" value="{{ $data->provinsi }}">
                             @error('provinsi')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -85,7 +85,7 @@
                     <div class="form-group row">
                         <label for="kokab" class="col-sm-2 col-form-label">kota</label>
                         <div class="col-sm-10">
-                            <input name="kokab" type="text" class="form-control @error('kokab') is-invalid @enderror" id="kokab" value={{ $data->kokab }}>
+                            <input name="kokab" type="text" class="form-control @error('kokab') is-invalid @enderror" id="kokab" value="{{ $data->kokab }}">
                             @error('kokab')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -96,7 +96,7 @@
                     <div class="form-group row">
                         <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10">
-                            <input name="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" value={{ $data->alamat }}>
+                            <input name="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" value="{{ $data->alamat }}">
                             @error('alamat')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -124,7 +124,7 @@
                     <div class="form-group row">
                         <label for="agama" class="col-sm-2 col-form-label">Agama</label>
                         <div class="col-sm-10">
-                            <input name="agama" type="text" class="form-control @error('agama') is-invalid @enderror" id="agama" value={{ $data->agama }}>
+                            <input name="agama" type="text" class="form-control @error('agama') is-invalid @enderror" id="agama" value="{{ $data->agama }}">
                             @error('agama')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -144,7 +144,7 @@
                             @enderror
                         </div>
                         <div class="ml-3">
-                            <img id="output" height="200" width="200">
+                            <img id="output" height="200" width="200" src="/{{ $data->foto }}">
                             <p class="fs-6 text-center mt-2">Preview</p>
                         </div>
 

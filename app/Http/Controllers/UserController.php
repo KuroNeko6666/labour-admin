@@ -75,7 +75,7 @@ class UserController extends Controller
         $nameFile .= '.'.$file->extension();
 
         $file->storeAs('foto', $nameFile);
-        $validated['foto'] = public_path('foto/'.$nameFile);
+        $validated['foto'] = 'foto/'.$nameFile;
         $user->update([
             'foto' => $validated['foto'],
         ]);
