@@ -154,7 +154,7 @@ class UserController extends Controller
             $nameFile = 'FU-'.sprintf("%06s", $user->id);
             $nameFile .= '.'.$file->extension();
             $file->storeAs('foto', $nameFile);
-            $validated['foto'] = $nameFilea;
+            $validated['foto'] = $nameFile;
         } else {
             if ($request->email == $user->email){
                 $validated = $request->validate([
