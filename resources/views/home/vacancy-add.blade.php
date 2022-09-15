@@ -16,7 +16,7 @@
                 <form action="{{ $path }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">
-                        <label for="perusahaan_id" class="col-sm-2 col-form-label">ID Peserta</label>
+                        <label for="perusahaan_id" class="col-sm-2 col-form-label">ID Perusahaan</label>
                         <div class="col-sm-10">
                             <input name="perusahaan_id" type="text"
                                 class="form-control @error('perusahaan_id') is-invalid @enderror" id="perusahaan_id" list="company">

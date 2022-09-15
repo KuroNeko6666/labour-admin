@@ -17,6 +17,23 @@
                     @csrf
                     @method('put')
                     <div class="form-group row">
+                        <label for="perusahaan_id" class="col-sm-2 col-form-label">ID Perusahaan</label>
+                        <div class="col-sm-10">
+                            <input name="perusahaan_id" type="text"
+                                class="form-control @error('perusahaan_id') is-invalid @enderror" id="perusahaan_id" list="company" value="{{ $data->perusahaan_id }}">
+                            <datalist id="company">
+                                @foreach ($company as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </datalist>
+                            @error('perusahaan_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="lowongan" class="col-sm-2 col-form-label">Lowongan</label>
                         <div class="col-sm-10">
                             <input name="lowongan" type="text" class="form-control @error('lowongan') is-invalid @enderror"
