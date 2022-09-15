@@ -75,7 +75,7 @@ class UserController extends Controller
         $nameFile .= '.'.$file->extension();
 
         $file->storeAs('foto', $nameFile);
-        $validated['foto'] = 'foto/'.$nameFile;
+        $validated['foto'] = $nameFile;
         $user->update([
             'foto' => $validated['foto'],
         ]);
@@ -154,7 +154,7 @@ class UserController extends Controller
             $nameFile = 'FU-'.sprintf("%06s", $user->id);
             $nameFile .= '.'.$file->extension();
             $file->storeAs('foto', $nameFile);
-            $validated['foto'] = public_path('foto/'.$nameFile);
+            $validated['foto'] = $nameFilea;
         } else {
             if ($request->email == $user->email){
                 $validated = $request->validate([

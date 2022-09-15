@@ -74,7 +74,7 @@ class PerusahaanController extends Controller
         $nameFile .= '.'.$file->extension();
 
         $file->storeAs('foto', $nameFile);
-        $validated['logo'] = public_path('foto/'.$nameFile);
+        $validated['logo'] = $nameFile;
         $company->update([
             'logo' => $validated['logo'],
         ]);
@@ -151,7 +151,7 @@ class PerusahaanController extends Controller
             $nameFile .= '.'.$file->extension();
 
             $file->storeAs('foto', $nameFile);
-            $validated['logo'] = public_path('foto/'.$nameFile);
+            $validated['logo'] = $nameFile;
         } else {
             if ($request->email == $company->email){
                 $validated = $request->validate([

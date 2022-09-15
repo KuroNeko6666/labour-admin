@@ -74,7 +74,7 @@ class VacancyController extends Controller
         $nameFile .= '.'.$file->extension();
 
         $file->storeAs('gambar', $nameFile);
-        $validated['gambar'] = public_path('gambar/'.$nameFile);
+        $validated['gambar'] = $nameFile;
         $vacancy->update([
             'gambar' => $validated['gambar'],
         ]);
@@ -139,7 +139,7 @@ class VacancyController extends Controller
             $nameFile .= '.'.$file->extension();
 
             $file->storeAs('gambar', $nameFile);
-            $validated['gambar'] = public_path('gambar/'.$nameFile);
+            $validated['gambar'] = $nameFile;
         } else {
             $validated = $request->validate([
                 'lowongan' => 'required|max:255',
