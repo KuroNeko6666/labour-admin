@@ -48,6 +48,9 @@ class PsychogramController extends Controller
      */
     public function store(StorePsychogramRequest $request)
     {
+        $vidated = $request->validate([
+            'file' => 'required|nimes:pdf|max:2048'
+        ]);
         $file = $request->file('file');
         try {
             Psychogram::create([

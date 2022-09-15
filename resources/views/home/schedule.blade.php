@@ -82,7 +82,6 @@
                                             </div>
                                         </td>
                                     </tr>
-
                                     @include('partials.delete-modal')
                                 @endforeach
                             </tbody>
