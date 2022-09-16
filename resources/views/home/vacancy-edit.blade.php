@@ -117,11 +117,11 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="logo" class="col-sm-2 col-form-label">Gambar</label>
+                        <label for="gambar" class="col-sm-2 col-form-label">Gambar</label>
                         <div class="col-sm-3 ml-2">
-                            <label class="custom-file-label" for="logo">Pilih Gambar</label>
-                            <input name="logo" type="file" class="custom-file-input form-control  @error('logo') is-invalid @enderror" id="logo" accept="image/*" onchange="loadFile(event)">
-                            @error('logo')
+                            <label class="custom-file-label" for="gambar">Pilih Gambar</label>
+                            <input name="gambar" type="file" class="custom-file-input form-control  @error('gambar') is-invalid @enderror" id="gambar" accept="image/*" onchange="loadFile(event)">
+                            @error('gambar')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
