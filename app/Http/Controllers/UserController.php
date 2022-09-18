@@ -107,12 +107,12 @@ class UserController extends Controller
     {
         if($user->foto){
             if(!File::exists(public_path('foto/'.$user->foto))){
-                $user->foto = 'default/DF-MALE.png';
+                $user->foto = 'img/default/DF-MALE.png';
             } else {
                 $user->foto  = 'foto/'.$user->foto;
             }
         } else {
-            $user->foto = 'default/DF-MALE.png';
+            $user->foto = 'img/default/DF-MALE.png';
         }
         return view('home.user-edit',[
             'title' => 'Labour Admin',

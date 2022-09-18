@@ -103,6 +103,15 @@ class PerusahaanController extends Controller
      */
     public function edit(Perusahaan $company)
     {
+        if($company->logo){
+            if(!File::exists(public_path('foto/'.$company->logo))){
+                $company->logo = 'img/default/DF-MALE.png';
+            } else {
+                $company->logo  = 'foto/'.$company->foto;
+            }
+        } else {
+            $company->foto = 'img/default/DF-MALE.png';
+        }
         return view('home.company-edit',[
             'title' => 'Labour Admin',
             'active' => 'master-company',
