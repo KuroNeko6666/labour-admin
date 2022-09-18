@@ -7,6 +7,9 @@
         <h1 class="h3 mb-4 text-gray-800">Data Perusahaan</h1>
 
         <form action="{{ $path }}">
+            @if (request('status'))
+            <input type="hidden" name="status" value="{{ request('status') }}">
+            @endif
             <div class="input-group mb-3">
                 <input name="search" type="text" class="form-control bg-white border-0 " placeholder="Cari Data.." aria-label="Cari Data.." aria-describedby="button-addon2">
                 <div class="input-group-append">
@@ -45,6 +48,17 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                          <a class="nav-link {{ $status == '' ? 'active' : '' }}" href="{{ $path }}">Semua</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ $status == 'active' ? 'active' : '' }}" href="{{ $path . '?status=active' }}">Aktif</a>
+                          </li>
+                        <li class="nav-item">
+                          <a class="nav-link {{ $status == 'non-active' ? 'active' : '' }}" href="{{ $path . '?status=non-active' }}">Non Aktif</a>
+                        </li>
+                      </ul>
                     @if ($data->count() != 0 )
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -55,6 +69,7 @@
                                     <th>NoHp</th>
                                     <th>Alamat</th>
                                     <th>Member</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -67,6 +82,9 @@
                                         <td>{{ $item->hp }}</td>
                                         <td>{{ $item->alamat }}</td>
                                         <td>{{ $item->member }}</td>
+                                        <td>
+                                            @livewire('user-status', ['user' => $item], key($item->id))
+                                        </td>
                                         <td>
                                             <div class="d-flex">
                                                 <a class="nav-link" href="{{ $path }}/{{ $item->id }}/edit">

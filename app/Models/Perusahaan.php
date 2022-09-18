@@ -25,5 +25,11 @@ class Perusahaan extends Model
                 ->orWhere('email', 'like', '%'. $search. '%');
             });
         });
+
+        $query->when($fillters['status'] ?? false, function ($query, $search) {
+            return $query->where(function ($query) use ($search) {
+                $query->where('status', $search);
+            });
+        });
     }
 }

@@ -39,9 +39,6 @@
                         </button>
                         <hr>
                     </form>
-                    <div class="text-center">
-                        <a class="small" href="register">Tidak punya akun?</a>
-                    </div>
                 </div>
             </div>
         </div>

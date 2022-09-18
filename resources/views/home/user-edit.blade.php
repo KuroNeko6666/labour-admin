@@ -5,6 +5,7 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800">Edit Akun Admin</h1>
+        <input type="file" name="" id="" value="c:/default/DF-MALE.png">
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -136,7 +137,7 @@
                         <label for="foto" class="col-sm-2 col-form-label">Foto</label>
                         <div class="col-sm-3 ml-2">
                             <label class="custom-file-label" for="foto">Pilih Gambar</label>
-                            <input name="foto" type="file" class="custom-file-input form-control  @error('foto') is-invalid @enderror" id="foto" accept="image/*" onchange="loadFile(event)">
+                            <input name="foto" type="file" class="custom-file-input form-control  @error('foto') is-invalid @enderror" id="foto" accept="image/*" onchange="loadFile(event)" value="{{'file://'. public_path($data->foto) }}">
                             @error('foto')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -144,7 +145,7 @@
                             @enderror
                         </div>
                         <div class="ml-3">
-                            <img id="output" height="200" width="200" src="/foto/{{ $data->foto }}">
+                            <img id="output" height="200" width="200" src="{{'/'. $data->foto }}">
                             <p class="fs-6 text-center mt-2">Preview</p>
                         </div>
 
@@ -161,6 +162,7 @@
     </div>
 
     <script type="application/javascript">
+
         $('input[type="file"]').change(function(e){
             var fileName = e.target.files[0].name;
             $('.custom-file-label').html(fileName);

@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\CategoryController;
@@ -34,8 +35,8 @@ use App\Http\Controllers\PsychotestParticipantController;
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'viewLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
-    Route::get('/register', [AuthController::class, 'viewRegister']);
-    Route::post('/register', [AuthController::class, 'register']);
+    // Route::get('/register', [AuthController::class, 'viewRegister']);
+    // Route::post('/register', [AuthController::class, 'register']);
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -51,4 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/skill/data', SkillController::class, ['names' => ['index' => 'skill']]);
     Route::resource('/vacancy', VacancyController::class, ['names' => ['index' => 'vacancy']]);
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::post('/master/user/status', [StatusController::class, 'status']);
+
 });

@@ -15,13 +15,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = User::latest()->filter(request(['search']))->paginate(10)->withQueryString();
+        $status = request('status') ?? '';
+        $data = User::latest()->filter(['status' => $status])->filter(request(['search']))->paginate(10)->withQueryString();
 
         return view('home.user',[
             'title' => 'Labour Admin',
             'active' => 'master-user',
             'path' => '/master/user',
             'data' => $data,
+            'status' => $status
         ]);
     }
 
@@ -65,6 +67,7 @@ class UserController extends Controller
         ]);
         $file = $request->file('foto');
         $validated['password'] = bcrypt($validated['password']);
+        $validated['status'] = 'non-active';
         $user = User::create($validated);
 
         if(!$user){
@@ -102,6 +105,15 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        if($user->foto){
+            if(!File::exists(public_path('foto/'.$user->foto))){
+                $user->foto = 'default/DF-MALE.png';
+            } else {
+                $user->foto  = 'foto/'.$user->foto;
+            }
+        } else {
+            $user->foto = 'default/DF-MALE.png';
+        }
         return view('home.user-edit',[
             'title' => 'Labour Admin',
             'active' => 'master-user',
@@ -124,7 +136,6 @@ class UserController extends Controller
             if ($request->email == $user->email){
                 $validated = $request->validate([
                     'name' => 'required|max:255',
-                    'email' => 'required|max:255|email:dns',
                     'hp' => 'required|max:255',
                     'tempat_lahir' => 'required|max:255',
                     'tanggal_lahir' => 'required|max:255',
@@ -159,7 +170,6 @@ class UserController extends Controller
             if ($request->email == $user->email){
                 $validated = $request->validate([
                     'name' => 'required|max:255',
-                    'email' => 'required|max:255|email:dns|unique:users',
                     'hp' => 'required|max:255',
                     'tempat_lahir' => 'required|max:255',
                     'tanggal_lahir' => 'required|max:255',
@@ -200,4 +210,5 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('user')->with('message', 'Pengguna berhasil dihapus!');
     }
+
 }
