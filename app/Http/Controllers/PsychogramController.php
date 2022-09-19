@@ -49,7 +49,7 @@ class PsychogramController extends Controller
     public function store(StorePsychogramRequest $request)
     {
         $vidated = $request->validate([
-            'file' => 'required|max:2048'
+            'file' => 'required|max:2048|mimes:pdf'
         ]);
         $file = $request->file('file');
 
@@ -59,8 +59,7 @@ class PsychogramController extends Controller
                 'size' => $file->getSize(),
                 'url' =>  '0',
             ]);
-            $fileName = 'PS-'. sprintf("%06s", $psychogram->id) .'.'.$file->extension();
-
+            $fileName = 'PS'. sprintf("%06s", $psychogram->id) .'.'.$file->extension();
             $psychogram->update([
                 'file' => $fileName,
                 'url' =>  public_path('psychogram/'.$fileName),
@@ -70,7 +69,7 @@ class PsychogramController extends Controller
             return redirect()->back()->with('error', 'file sudah tersedia');
         }
 
-        $request->file->storeAs('psychogram', $fileName);
+        $request->file->storeAs('psychogram', $file->getClientOriginalName());
         return redirect()->route('psychogram')->with('message', 'alat psikogram berhasil di tambahkan');
     }
 
