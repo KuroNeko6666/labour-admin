@@ -143,7 +143,7 @@
                         </div>
                         <div class="ml-3">
                             <img id="output" height="200" width="200" src="{{'/'. $data->logo }}">
-                            <p class="fs-6 text-center mt-2">Preview {{ $data->logo }}</p>
+                            <p class="fs-6 text-center mt-2">Preview</p>
                         </div>
 
                     </div>
