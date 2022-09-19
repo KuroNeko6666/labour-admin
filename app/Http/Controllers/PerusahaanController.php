@@ -107,7 +107,7 @@ class PerusahaanController extends Controller
             if(!File::exists(public_path('foto/'.$company->logo))){
                 $company->logo = 'img/default/DF-MALE.png';
             } else {
-                $company->logo  = 'foto/'.$company->foto;
+                $company->logo  = 'foto/'.$company->logo;
             }
         } else {
             $company->foto = 'img/default/DF-MALE.png';
