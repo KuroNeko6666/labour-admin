@@ -100,6 +100,15 @@ class VacancyController extends Controller
      */
     public function edit(Vacancy $vacancy)
     {
+        if($vacancy->gambar){
+            if(!File::exists(public_path('gambar/'.$vacancy->gambar))){
+                $vacancy->gambar = 'img/default/DF-MALE.png';
+            } else {
+                $vacancy->gambar  = 'gambar/'.$vacancy->gambar;
+            }
+        } else {
+            $company->gambar = 'img/default/DF-MALE.png';
+        }
         return view('home.vacancy-edit',[
             'title' => 'Labour Admin',
             'active' => 'vacancy',

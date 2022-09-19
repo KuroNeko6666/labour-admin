@@ -128,7 +128,7 @@
                             @enderror
                         </div>
                         <div class="ml-3">
-                            <img id="output" height="200" width="200" src="/gambar/{{ $data->gambar }}">
+                            <img id="output" height="200" width="200" src="{{'/'. $data->gambar }}">
                             <p class="fs-6 text-center mt-2">Preview</p>
                         </div>
 

@@ -110,7 +110,7 @@ class PerusahaanController extends Controller
                 $company->logo  = 'foto/'.$company->logo;
             }
         } else {
-            $company->foto = 'img/default/DF-MALE.png';
+            $company->logo = 'img/default/DF-MALE.png';
         }
         return view('home.company-edit',[
             'title' => 'Labour Admin',
