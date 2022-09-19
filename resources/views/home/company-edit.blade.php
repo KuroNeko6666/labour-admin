@@ -19,7 +19,8 @@
                     <div class="form-group row">
                         <label for="name" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ $data->name }}">
+                            <input name="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                                id="name" value="{{ $data->name }}">
                             @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -30,7 +31,8 @@
                     <div class="form-group row">
                         <label for="email" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="email" value="{{ $data->email }}">
+                            <input name="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                id="email" value="{{ $data->email }}">
                             @error('email')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -41,7 +43,8 @@
                     <div class="form-group row">
                         <label for="member" class="col-sm-2 col-form-label">Member</label>
                         <div class="col-sm-10">
-                            <select name="member" id="member" class="form-control @error('member') is-invalid @enderror">
+                            <select name="member" id="member"
+                                class="form-control @error('member') is-invalid @enderror">
                                 <option value="{{ $data->member }}" selected>{{ $data->member }}, Klik untuk ubah</option>
                                 <option value="free">Free</option>
                                 <option value="silver">Silver</option>
@@ -71,7 +74,7 @@
                         <label for="hp" class="col-sm-2 col-form-label">No Hp</label>
                         <div class="col-sm-10">
                             <input name="hp" type="number" class="form-control @error('hp') is-invalid @enderror"
-                                id="hp"  value="{{ $data->hp }}">
+                                id="hp" value="{{ $data->hp }}">
                             @error('hp')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -81,7 +84,7 @@
                     </div>
                     <div class="form-group row">
                         <label for="web" class="col-sm-2 col-form-label">Website</label>
-                        <div class="col-sm-10"  >
+                        <div class="col-sm-10">
                             <input name="web" type="text" class="form-control @error('web') is-invalid @enderror"
                                 id="web" value="{{ $data->web }}">
                             @error('web')
@@ -129,7 +132,9 @@
                         <label for="logo" class="col-sm-2 col-form-label">Logo</label>
                         <div class="col-sm-3 ml-2">
                             <label class="custom-file-label" for="logo">Pilih Gambar</label>
-                            <input name="logo" type="file" class="custom-file-input form-control  @error('logo') is-invalid @enderror" id="logo" accept="image/*" onchange="loadFile(event)">
+                            <input name="logo" type="file"
+                                class="custom-file-input form-control  @error('logo') is-invalid @enderror" id="logo"
+                                accept="image/*" onchange="loadFile(event)">
                             @error('logo')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -138,7 +143,7 @@
                         </div>
                         <div class="ml-3">
                             <img id="output" height="200" width="200" src="/{{ $data->logo }}">
-                            <p class="fs-6 text-center mt-2">Preview</p>
+                            <p class="fs-6 text-center mt-2">Preview {{ $data->logo }}</p>
                         </div>
 
                     </div>
@@ -149,7 +154,6 @@
                 </form>
             </div>
         </div>
-
     </div>
 
     <script type="application/javascript">
