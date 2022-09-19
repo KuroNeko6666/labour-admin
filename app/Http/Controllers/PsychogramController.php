@@ -52,18 +52,25 @@ class PsychogramController extends Controller
             'file' => 'required|max:2048'
         ]);
         $file = $request->file('file');
-        $fileName = 'DF-MALE'.$file->extension();
+
         try {
-            Psychogram::create([
-                'file' => $fileName,
+            $psychogram = Psychogram::create([
+                'file' => '0',
                 'size' => $file->getSize(),
-                'url' =>  public_path('img/default/'.$fileName),
+                'url' =>  '0',
             ]);
+            $fileName = 'PS-'. sprintf("%06s", $psychogram->id) .'.'.$file->extension();
+
+            $psychogram->update([
+                'file' => $fileName,
+                'url' =>  public_path('psychogram/'.$fileName),
+            ]);
+
         } catch (\Illuminate\Database\QueryException $exception) {
             return redirect()->back()->with('error', 'file sudah tersedia');
         }
 
-        $request->file->storeAs('img/default', $file->getClientOriginalName());
+        $request->file->storeAs('psychogram', $fileName);
         return redirect()->route('psychogram')->with('message', 'alat psikogram berhasil di tambahkan');
     }
 
@@ -109,7 +116,7 @@ class PsychogramController extends Controller
      */
     public function destroy(Psychogram $psychogram)
     {
-        // File::delete($psychogram->url);
+        File::delete($psychogram->url);
         $psychogram->delete();
 
         return redirect()->route('psychogram')->with('message', 'alat psikogram berhasil di dihapus');

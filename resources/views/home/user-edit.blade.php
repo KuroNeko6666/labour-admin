@@ -4,13 +4,13 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800">Edit Akun Admin</h1>
+        <h1 class="h3 mb-4 text-gray-800">Edit Akun Pengguna</h1>
         <input type="file" name="" id="" value="c:/default/DF-MALE.png">
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Formulir Edit Akun Admin</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Formulir Edit Akun Pengguna</h6>
             </div>
             <div class="card-body">
 
