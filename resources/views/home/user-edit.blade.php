@@ -5,8 +5,6 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800">Edit Akun Pengguna</h1>
-        <input type="file" name="" id="" value="c:/default/DF-MALE.png">
-
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
