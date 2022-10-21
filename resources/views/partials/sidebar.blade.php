@@ -60,7 +60,7 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item {{ str_contains($active, 'psychotest') ? 'active' : '' }}">
         <a class="nav-link {{ str_contains($active, 'psychotest') ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#psikotest"
-            aria-expanded="true" aria-controls="psikotest">
+            aria-expanded="true" aria-controls="psikotest">           
             <i class="fas fa-fw fa-cog"></i>
             <span>Psikotest</span>
         </a>
